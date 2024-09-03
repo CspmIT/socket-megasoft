@@ -29,6 +29,12 @@ app.post('/webhookMP', validateEntity, (req, res) => {
 	res.json({ message: 'success', data: req.body })
 })
 
+app.post('/webhookMacro', (req, res) => {
+	console.log(req.body)
+	io.emit('webhook', { data: req.body })
+	res.json({ message: 'success', data: req.body })
+})
+
 server.listen(port, () => {
 	console.log(`Server is running on http://localhost:${port}`)
 })
