@@ -22,10 +22,9 @@ io.on('connection', (socket) => {
 		console.log('user disconnected')
 	})
 })
-
-app.post('/webhookMP', validateEntity, (req, res) => {
-	console.log(req.body)
-	io.emit('webhook', { data: req.body })
+// validateEntity,
+app.post('/webhookMP', (req, res) => {
+	io.emit('webhook', { data: req.body, query: req.query })
 	res.json({ message: 'success', data: req.body })
 })
 
